@@ -1,0 +1,49 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_CLIENT:      ROLE_USER
+        ROLE_ADMIN:       ROLE_ADMIN
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_AGENT:       ROLE_ADMIN
+        ROLE_USER:        ROLE_USER
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            user_checker: security.user_checker
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+
+                # NEW BITS
+                # the login form will POST here on submit
+                # the default value would be /login_check
+                check_path: fos_user_security_check
+
+                # the user is redirected here when they need to log in
+                # the default would be /login
+                login_path: fos_user_security_login
+
+                # We will fix this shortly, but for now, the default
+                # would be '/', but we would need it to be e.g.
+                # /en/
+                default_target_path: /admin
+                success_handler: authentication.handler.login_success_handler
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
+
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/user/, role: ROLE_CLIENT }

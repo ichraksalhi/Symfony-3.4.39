@@ -1,0 +1,44 @@
+{% extends 'takwa.html.twig' %}
+{% block title %}Modifier reservation{% endblock %}
+
+{% block body %}
+    <br/>
+    <br/>
+    <h1>Modifier reservation</h1>
+
+    {{ form_start(edit_form) }}
+    <table>
+
+        <tr>
+            <td><h5> nom  :</h5> </td> <td> {{ form_widget(edit_form.nom, {'attr': {'class': 'form-control','rows':'4','cols':'40','placeholder':'nom enfant'}}) }}</td>
+        </tr>
+        <tr>
+            <td> <h5> type Abonnement: </h5></td> <td> {{ form_widget(edit_form.typeAbo, {'attr': {'class': 'form-control','rows':'4','cols':'40','placeholder':'annuel,mensuel,hebdomadaire'}}) }}</td>
+        </tr>
+        <tr>
+            <td> <h5> type Pension: </h5> </td> <td> {{ form_widget(edit_form.typePension, {'attr': {'class': 'form-control','rows':'4','cols':'40','placeholder':'complete, demi pension1 , demi pension2'}}) }}</td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td>   <input  type="submit" class="btn_3" value="           Modifier            "> </td>
+
+        </tr>
+        {{ form_end(edit_form) }}
+
+        <tr>
+            {{ form_start(delete_form) }}
+            <td> </td>
+         <td>   <input type="submit"  class="btn_3" value="        Supprimer           " >   </td>
+            {{ form_end(delete_form) }}
+        </tr>
+        <tr>
+            <td></td>
+            <td>   <a href="{{ path('show_reservations') }}"  class="btn_3">retourner vers ma liste de reservations</a></td>
+        </tr>
+
+
+    </table>
+
+
+
+{% endblock %}

@@ -1,0 +1,156 @@
+{% extends '//base1.html.twig' %}
+ {% block  body  %}
+
+
+
+
+
+     <!-- breadcrumb part start-->
+     <section class="breadcrumb_part">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-12">
+                     <div class="breadcrumb_iner">
+                         <h2>espace evaluation</h2>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+     <!-- breadcrumb part end-->
+     <div class="sidebar-search">
+
+         <div class="input-group custom-search-form">
+
+             <input type="text" id="search" class="form-control" placeholder="Search here">
+         </div>
+         <!-- /input-group -->
+     </div>
+     <ul class="nav" id="side-menu">
+         <li>
+             <a href="#"> Entities<span class="fa arrow"></span></a>
+             <ul class="nav nav-second-level" id="entitiesNav">
+             </ul>
+         </li>
+     </ul><br><br><br><br>
+
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+     <script type="text/javascript">
+         jQuery(document).ready(function() {
+             var searchRequest = null;
+             $("#search").keyup(function() {
+                 var minlength = 1;
+                 var that = this;
+                 var value = $(this).val();
+                 var entitySelector = $("#entitiesNav").html('');
+                 if (value.length >= minlength ) {
+                     if (searchRequest != null)
+                         searchRequest.abort();
+                     searchRequest = $.ajax({
+                         type: "GET",
+                         url: "{{ path('search') }}",
+                         data: {
+                             'q' : value
+                         },
+                         dataType: "text",
+                         success: function(msg){
+                             //we need to check if the value is the same
+                             if (value===$(that).val()) {
+                                 var result = JSON.parse(msg);
+                                 $.each(result, function(key, arr) {
+                                     $.each(arr, function(id, value) {
+                                         if (key === 'evaluations') {
+                                             if (id !== 'error') {
+                                                 console.log(value[1]);
+                                                 entitySelector.append('<li><b>'+value[1]+'</b><a href="/modifier/'+id+'">');
+                                             } else {
+                                                 entitySelector.append('<li class="error">'+value+'</li>');
+                                             }
+                                         }
+                                     });
+                                 });
+                             }
+                         }
+                     });
+                 }
+             });
+         });
+     </script>
+
+
+     <div class="container">
+         <hr>
+         <div class="row">
+
+
+             <div class="col-md-6">
+                 <a href="recents" class="genric-btn success">    LES ANCIENNES EVALUATIONS
+                 </a>
+             </div>
+
+
+             <div class="col-md-6 ">
+                 <a href="venir" class="genric-btn warning">
+                     LES DATES DES FUTURES EVALUATIONS
+
+                 </a>
+             </div>
+         </div>
+         <hr>
+     </div>
+
+
+
+     <div class="col-md-12">
+         <div class="card">
+             <div class="card-header card-header-primary">
+                 <h4 class="card-title ">liste des reclamations</h4>
+                 {#                        <p class="card-category"> Here is a subtitle for this table</p>#}
+             </div>
+             <div class="card-body">
+                 <div class="table-responsive">
+                     <table class="table">
+                         <thead>
+                         <tr>
+                             <th>Note</th>
+
+                             <th>date</th>
+
+
+
+
+                             <th>modifier</th>
+
+
+                             {% for Evaluation in Evaluations %}
+                         <tr>
+
+
+                             <td>{{ Evaluation.note }}</td>
+                             <td>{{ Evaluation.datee|date }}</td>
+
+                             <td><a href="{{ path('modifier',{'id':Evaluation.id}) }}" >  <button class="genric-btn primary circle">Modifier</button></a></td>
+
+                         </tr>
+
+
+
+                         {% endfor %}
+                         </tr>
+                         </thead>
+                         <hr>
+
+
+
+                         </tbody>
+                     </table>
+
+                 </div>
+
+             </div>
+
+         </div>
+     </div>
+     </div>
+ {% endblock  %}

@@ -1,0 +1,43 @@
+{% extends 'AcceuilAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Les cartes fidèlités</h1>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+
+            <th style="color:#875e84;" scope="col">Nombre points</th>
+            <th style="color:#875e84;" scope="col">Credit</th>
+            <th style="color:#875e84;" scope="col">Benefice</th>
+            {#     <th style="color:#875e84;" scope="col">Status</th> #}
+            <th style="color:#875e84;" scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cartefidelite in cartefidelites %}
+            <tr>
+
+                <td>{{ cartefidelite.nbpoint }}</td>
+                <td>{{ cartefidelite.credit }}</td>
+                <td>{{ cartefidelite.benefice }}</td>
+                {#    <td>{{ cartefidelite.status }}</td> #}
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cartefidelite_show1', { 'idC': cartefidelite.idC }) }} " style="color:#b08ead;" >afficher l'historique des abonnements</a>
+                        </li>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cartefidelite_new') }}">Create a new cartefidelite</a>
+        </li>
+    </ul>
+{% endblock %}

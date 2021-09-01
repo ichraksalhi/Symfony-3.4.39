@@ -1,0 +1,48 @@
+{% extends 'takwa.html.twig' %}
+
+{% block body %}
+    <h1>Cartefidelite</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idc</th>
+                <td>{{ cartefidelite.idC }}</td>
+            </tr>
+            <tr>
+                <th>Idab</th>
+                <td>{{ cartefidelite.idAb }}</td>
+            </tr>
+            <tr>
+                <th>Nbpoint</th>
+                <td>{{ cartefidelite.nbpoint }}</td>
+            </tr>
+            <tr>
+                <th>Credit</th>
+                <td>{{ cartefidelite.credit }}</td>
+            </tr>
+            <tr>
+                <th>Benefice</th>
+                <td>{{ cartefidelite.benefice }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ cartefidelite.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cartefidelite_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('cartefidelite_edit', { 'idC': cartefidelite.idC }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

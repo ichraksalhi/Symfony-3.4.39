@@ -1,0 +1,4 @@
+services:
+#    ichh.example:
+#        class: ichhBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

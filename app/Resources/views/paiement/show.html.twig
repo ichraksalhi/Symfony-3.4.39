@@ -1,0 +1,45 @@
+{% extends 'takwa.html.twig' %}
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+    <h1>Paiement</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ paiement.id }}</td>
+            </tr>
+            <tr>
+                <th>Idc</th>
+                <td>{{ paiement.idC }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ paiement.type }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ paiement.total }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if paiement.date %}{{ paiement.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('paiement_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('paiement_edit', { 'id': paiement.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

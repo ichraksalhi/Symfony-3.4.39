@@ -1,0 +1,99 @@
+{% extends '//base1.html.twig' %}
+ {% block  body  %}
+
+     <!-- breadcrumb part start-->
+     <section class="breadcrumb_part">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-12">
+                     <div class="breadcrumb_iner">
+                         <h2>espace evaluation</h2>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+
+<link rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css'>
+<style type="text/css">
+    .stars-outer {
+        display: inline-block;
+        position: relative;
+        font-family: FontAwesome;
+        font-size: 100px;
+    }
+    .stars-outer::before {
+
+        content: "\f006 \f006 \f006 \f006 \f006";
+        color: #b08ead;
+    }
+    .stars-inner {
+        color: #ea76ff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 100px;
+        width: {{ note*100/5 }}%;
+
+    }
+    .stars-inner::before {
+        content: "\f005 \f005 \f005 \f005 \f005";
+    }
+
+</style>
+
+     <div class="section-top-border">
+         <h4 class="mb-30"> <center>Pour ganier votre confience en met a votre disposition la moyenne des votes </center></h4>
+         <div class="row">
+             <div class="col-lg-12">
+
+             </div>
+         </div>
+     </div>
+
+
+     <h1> MOYENNE DES NOTES <i class="fa fa-angle-double-down"></i>
+    </a>
+    </button></a><br><div class="stars-outer" >
+        <div class="stars-inner"></div>
+             <h1>  NOTES FINAL <i class="fa fa-angle-double-down"></i>
+         </div> <h1> <label>{{ note}}/5</label> </h1> </h1>
+
+     <div class="blog_details">
+         <a class="d-inline-block" href="single-blog.html">
+             <h2>si vous voulez pas passez une reclamations</h2>
+             <h2> vous pouvez laisser une commentaire sur notre page</h2>
+
+         </a>
+
+     </div>
+     <!-- Post Thumb -->
+     <div class="blog-post-thumb mb-30">
+         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.2"></script>
+
+         <div id="fb-root"></div>
+         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.2"></script>
+
+         <div id="fb-root"></div>
+         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.2"></script>
+     </div>
+
+     <!-- Post Title -->
+     <!-- Post Meta -->
+     <div class="post-meta d-flex justify-content-between">
+
+         <!-- Comments -->
+
+     </div>
+     <!-- bg gradients -->
+     <div class="bg-gradients mb-30 w-25"></div>
+     <div class="fb-comments" data-
+          href="http://www.amaranthe.info/2017/03/07ins%C3%A9rer-des-commentaire-facebook-sur-votre-site/" data-width="768" data-numposts="99"></div>
+     <a href="#" class="read-more-btn">Read more</a>
+     </div>
+
+
+     </div>
+ {% endblock  %}
