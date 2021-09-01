@@ -1,0 +1,55 @@
+{#{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Abonneresto creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('abonneresto_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
+#}
+{% extends "takwa.html.twig" %}
+{% block title %}Inscription au restaurant{% endblock %}
+{% block body %}
+    <br/>
+    <br/>
+
+    <div class="col-12">
+        <h2 class="contact-title">Inscrire votre enfant au restaurant </h2>
+    </div>
+
+    {{ form_start(form) }}
+
+    <table>
+
+        <tr>
+            <td><h5> nom  :</h5> </td> <td> {{ form_widget(form.nom, {'attr': {'class': 'form-control','rows':'4','cols':'40','placeholder':'nom enfant'}}) }}</td>
+        </tr>
+        <tr>
+          <td> <h5> type Abonnement: </h5></td> <td> {{ form_widget(form.typeAbo, {'attr': {'class': 'form-control','rows':'4','cols':'40','placeholder':'annuel,mensuel,hebdomadaire'}}) }}</td>
+        </tr>
+        <tr>
+            <div class="select_option">
+                <td> <h5> type Pension: </h5> </td> <td> {{ form_widget(form.typePension, {'attr': {'class': 'form-control','rows':'4','cols':'40','placeholder':'complete, demi pension1 , demi pension2','value' : 7  }}) }}</td>
+            </div>
+</tr>
+        <tr>
+            <td> </td>
+            <td>   <input  type="submit" class="btn_3" value="                Inscrie                "> </td>
+
+        </tr>
+
+
+    </table>
+    {{ form_end(form) }}
+
+{% endblock %}
+
+

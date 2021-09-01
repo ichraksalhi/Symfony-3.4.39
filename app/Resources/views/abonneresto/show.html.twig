@@ -1,0 +1,51 @@
+{% extends 'takwa.html.twig' %}
+{% block title %}Mes reservations{% endblock %}
+{% block body %}
+    <h1>Abonneresto</h1>
+
+    <table>
+        <tbody>
+
+
+            <tr>
+                <th>Nom</th>
+                <td>{{ abonneresto.nom }}</td>
+            </tr>
+            <tr>
+                <th>Type abonnement</th>
+                <td>{{ abonneresto.typeAbo }}</td>
+            </tr>
+            <tr>
+                <th>Type pension</th>
+                <td>{{ abonneresto.typePension }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ abonneresto.etat }}</td>
+            </tr>
+            <tr>
+                <th>Absence</th>
+                <td>{{ abonneresto.absence }}</td>
+            </tr>
+            <tr>
+                <th>Date abonnement</th>
+                <td>{% if abonneresto.dateAbo %}{{ abonneresto.dateAbo|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('show_reservations') }}" style="color:#b08ead;">Retourner vers ma liste de reservations</a>
+        </li>
+        <li>
+            <a href="{{ path('abonneresto_edit', { 'id': abonneresto.id }) }}" style="color:#b08ead;">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit"  class="btn_3" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+
+    </ul>
+{% endblock %}

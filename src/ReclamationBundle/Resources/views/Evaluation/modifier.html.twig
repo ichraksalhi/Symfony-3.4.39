@@ -1,0 +1,46 @@
+{% extends '//base1.html.twig' %}
+{% block  body  %}
+    <div class="container" style="margin-top:100px;">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Evaluation</h4>
+                    <p class="card-category">Modifier votre evaluation</p>
+                </div>
+
+                <div class="card-body">
+
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">note</label>
+                                {{ form_widget(form.note,{ 'attr': {'class': 'form-control'} }) }}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">choisir la reclamation a note</label>
+                                {{ form_widget(form.reclamation_id,{ 'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+                    <button type="submit" class="genric-btn primary circle">Modifier</button>
+                    <div class="clearfix"></div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

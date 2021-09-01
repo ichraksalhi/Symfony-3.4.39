@@ -1,0 +1,33 @@
+<center><h1>REÇU D’UNE SOMME EN ESPÈCES</h1></center>
+<center> <h1>Paiment de la formation " {{TabReclamation.nomDemande }}"</h1></center>
+
+<p> Lieu : {{ TabReclamation.prenomDemande }}</p>
+<p> Date de formation: {{ TabReclamation.date | numTelDemande }}</p><br>
+<p> Somme reçue en espèces : {{ TabReclamation.postDemande }} </p>
+<p> Lieu : {{ TabReclamation.cinDemande }}</p>
+<p> Lieu : {{ TabReclamation.idDemande }}</p>
+
+
+<p> </p>
+<p> </p>
+<div>
+    <!-- Do not forget to give width and height to your svg
+        use PLAIN SVG directly (<svg>content</svg>)
+        Tiger SVG EXAMPLE : https://upload.wikimedia.org/wikipedia/commons/f/fd/Ghostscript_Tiger.svg
+    -->
+</div>
+<p>Canvas Example with Javascript: </p><br>
+
+<hr>
+<span id="dinamic-content"></span>
+<script>
+    document.getElementById("dinamic-content").innerHTML = 'This string has been appended using javascript';
+
+    // Draw circle on canvas
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(100,75,50,0,2*Math.PI);
+    ctx.stroke();
+</script>
+

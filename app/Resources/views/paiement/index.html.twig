@@ -1,0 +1,86 @@
+{% extends 'takwa.html.twig' %}
+{% block title %}Mes paiements{% endblock %}
+
+{% block body %}
+
+    <h1>Historique de mes paiements </h1>
+    {% for message in app.flashes('notice') %}
+        <div class="alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+<input type="text" id="search" class="form-control" placeholder="Cherchez paiement ..." style="background-color:{{'#e1d0de'}}">
+<table  class="table"  id="tableac">
+        <thead>
+            <tr>
+
+                <th style="color:#875e84;" scope="col">Type</th>
+                <th style="color:#875e84;" scope="col">Total</th>
+                <th style="color:#875e84;" scope="col">Date</th>
+                <th style="color:#875e84;" scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paiement in paiements %}
+            <tr>
+             {#    <td><a href="{{ path('paiement_show', { 'id': paiement.id }) }}"  style="color:#b08ead;">{{ paiement.id }}</a></td>
+                <td>{{ paiement.idC }}</td> #}
+
+
+                <td>{{ paiement.type }}</td>
+                <td>{{ paiement.total }}</td>
+                <td>{% if paiement.date %}{{ paiement.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('paiement_show', { 'id': paiement.id }) }}" style="color:#b08ead;">voir</a>
+                        </li>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('paiement_new') }}">Create a new paiement</a>
+        </li>
+    </ul>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#tableac tbody tr').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                        if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                        {
+                            found = 'true';
+                        }
+                    });
+                    if(found == 'true')
+                    {
+                        $(this).show();
+
+                    }
+                    else
+                    {
+                        $(this).hide();
+
+                    }
+                });
+            }
+        });
+    </script>
+
+
+{% endblock %}

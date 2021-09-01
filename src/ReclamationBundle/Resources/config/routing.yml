@@ -1,0 +1,133 @@
+reclamation_homepage:
+    path:     /
+    defaults: { _controller: ReclamationBundle:Default:create }
+read:
+    path:     /read
+    defaults: { _controller: ReclamationBundle:Default:read }
+read1:
+    path:     /read1
+    defaults: { _controller: ReclamationBundle:Default:read1 }
+create:
+    path:     /create
+    defaults: { _controller: ReclamationBundle:Default:create }
+update:
+    path:     /update{id}
+    defaults: { _controller: ReclamationBundle:Default:update }
+delete:
+    path:     /delete{id}
+    defaults: { _controller: ReclamationBundle:Default:delete }
+trier:
+    path:     /trier
+    defaults: { _controller: ReclamationBundle:Default:trier }
+trier1:
+    path:     /trier1
+    defaults: { _controller: ReclamationBundle:Default:trier1 }
+affichage:
+    path:     /affichage
+    defaults: { _controller: ReclamationBundle:Evaluation:affichage }
+affichage1:
+    path:     /affichage1
+    defaults: { _controller: ReclamationBundle:Evaluation:affichage1 }
+ajout:
+    path:     /ajout
+    defaults: { _controller: ReclamationBundle:Evaluation:ajout }
+supprimer:
+    path:     /supprimer/{id}
+    defaults: { _controller: ReclamationBundle:Evaluation:supprimer }
+modifier:
+    path:     /modifier/{id}
+    defaults: { _controller: ReclamationBundle:Evaluation:modifier }
+ajout1:
+    path:     /ajout1
+    defaults: { _controller: ReclamationBundle:Evaluation:ajout }
+recherche_reclamation:
+    path:     /rechercher
+    defaults: { _controller: ReclamationBundle:Default:search}
+approved:
+    path:     /Approved/{id}
+    defaults: { _controller: ReclamationBundle:Default:approved }
+sandbox_pdfexample:
+    path:     /pdf
+    defaults: { _controller: ReclamationBundle:Default:pdf }
+search:
+    path:     /search
+    defaults: { _controller: ReclamationBundle:Evaluation:search }
+detaile:
+    path:     /detaile/{id}
+    defaults: { _controller: ReclamationBundle:Default:showdetaile }
+recents:
+    path:    /recents
+    defaults: { _controller: ReclamationBundle:Evaluation:recents }
+venir:
+    path:    /venir
+    defaults: { _controller: ReclamationBundle:Evaluation:venir }
+searchdate:
+    path:    /searchdate
+    defaults: { _controller: ReclamationBundle:Evaluation:searchdate }
+message:
+    path:     /message
+    defaults: { _controller: ReclamationBundle:Default:message }
+messagesorti:
+    path:     /messagesorti
+    defaults: { _controller: ReclamationBundle:Default:message1 }
+listNonapprouve:
+    path:     /listNonapprouve
+    defaults: { _controller: ReclamationBundle:Default:listNonapprouve }
+listapprouve:
+    path:     /listapprouve
+    defaults: { _controller: ReclamationBundle:Default:listapprouve }
+moyNote:
+    path:    /moyNote
+    defaults: { _controller: ReclamationBundle:Evaluation:moyNote }
+RatingsNbre:
+    path:    /RatingsNbre
+    defaults: { _controller: ReclamationBundle:Evaluation:NbreNote }
+RatingsNbre1:
+    path:    /RatingsNbre1
+    defaults: { _controller: ReclamationBundle:Evaluation:moyNote1 }
+moyId:
+    path:    /moyId
+    defaults: { _controller: ReclamationBundle:Evaluation:moyId }
+readMobile:
+    path:     /reclamation_api/readMobile
+    defaults: { _controller: ReclamationBundle:Default:readMobile }
+findMobile:
+    path:     /reclamation_api/findMobile/{str}
+    defaults: { _controller: ReclamationBundle:Default:findMobile }
+createMobile:
+    path:     /reclamation_api/createMobile
+    defaults: { _controller: ReclamationBundle:Default:createMobile }
+ajoutMobile:
+    path:    /reclamation_api/ajoutMobile
+    defaults: { _controller: ReclamationBundle:Evaluation:ajoutMobile }
+affichageMobile:
+    path:    /reclamation_api/affichageMobile
+    defaults: { _controller: ReclamationBundle:Evaluation:affichageMobile }
+newMobile:
+    path:    /reclamation_api/newMobile
+    defaults: { _controller: ReclamationBundle:MapLocation:newMobile }
+allMobile:
+    path:    /reclamation_api/allMobile
+    defaults: { _controller: ReclamationBundle:MapLocation:allMobile }
+gettotalperMobile:
+    path:     /reclamation_api/gettotalperMobile
+    defaults: { _controller: ReclamationBundle:Evaluation:gettotalperMobile }
+gettotalperMobile1:
+    path:     /reclamation_api/gettotalperMobile1
+    defaults: { _controller: ReclamationBundle:Default:gettotalperMobile1 }
+gettotalperMobile2:
+    path:     /reclamation_api/gettotalperMobile2
+    defaults: { _controller: ReclamationBundle:Evaluation:gettotalperMobile2 }
+gettotalperMobile3:
+    path:     /reclamation_api/gettotalperMobile3
+    defaults: { _controller: ReclamationBundle:Evaluation:gettotalperMobile3 }
+
+
+
+
+
+
+
+
+
+

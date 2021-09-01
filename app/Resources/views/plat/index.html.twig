@@ -1,0 +1,132 @@
+ <h1>Plats list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rat</th>
+                <th>Plat</th>
+                <th>Nom</th>
+                <th>Nbrrat</th>
+                <th>Rate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plat in plats %}
+            <tr>
+                <td><a href="{{ path('plat_show', { 'id': plat.id }) }}">{{ plat.id }}</a></td>
+                <td>{{ plat.rat }}</td>
+                <td>{{ plat.plat }}</td>
+                <td>{{ plat.nom }}</td>
+                <td>{{ plat.nbrrat }}</td>
+                <td>
+                <div class="rateyo"  id="rate" onclick="saveData()"></div>
+                    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+                    <script type="text/javascript" src="{{ asset('js/jquery.rateyo.min.js') }}"></script>
+
+
+                <script>
+
+                    $(function () {
+
+
+                        var rating = 1.6;
+
+                        $(".counter").text(rating);
+
+                        $("#rateYo1").on("rateyo.init", function () { console.log("rateyo.init"); });
+
+                        $("#rateYo1").rateYo({
+                            rating: rating,
+                            numStars: 5,
+                            precision: 2,
+                            starWidth: "64px",
+                            spacing: "5px",
+                            rtl: true,
+                            multiColor: {
+
+                                startColor: "#000000",
+                                endColor  : "#ffffff"
+                            },
+                            onInit: function () {
+
+                                console.log("On Init");
+                            },
+                            onSet: function () {
+
+                                console.log("On Set");
+                            }
+                        }).on("rateyo.set", function (e,data) { console.log("rateyo.set"); })
+                            .on("rateyo.change", function () { console.log("rateyo.change"); });
+
+                        $(".rateyo").rateYo()
+                            .on("rateyo.set", function (e, data) {
+                                //alert("The rating is set to " + data.rating + "!");
+
+                            });
+
+                        $(".rateyo-readonly-widg").rateYo({
+
+                            rating: rating,
+                            numStars: 5,
+                            precision: 2,
+                            minValue: 1,
+                            maxValue: 5
+                        }).on("rateyo.change", function (e, data) {
+
+                            console.log(data.rating);
+                        });
+                    });
+                    function saveData() {
+
+                        var rate= $('#rate').val();
+
+
+                        var a={{ plat.id }};
+
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ path('plat_rating') }}",
+                            data: {'rate': rate,'a': a},
+                            success: function (data ) {
+                                console.log(data);
+                            }
+
+                        });
+
+
+
+                    }
+
+                </script>
+                </td>
+
+
+
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('plat_show', { 'id': plat.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('plat_edit', { 'id': plat.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <form method="POST">
+            <input  type="text" name="Date_Match" id="s">
+
+        </form>
+
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('plat_new') }}">Create a new plat</a>
+        </li>
+    </ul>
+

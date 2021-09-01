@@ -1,0 +1,135 @@
+{% extends '//base1.html.twig' %}
+ {% block  body  %}
+     <!-- breadcrumb part start-->
+     <section class="breadcrumb_part">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-12">
+                     <div class="breadcrumb_iner">
+                         <h2>espace evaluation</h2>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+
+
+    .heading {
+        font-size: 25px;
+        margin-right: 25px;
+    }
+
+    .fa {
+        font-size: 30px;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    /* Three column layout */
+    .side {
+        float: left;
+        width: 15%;
+        margin-top:10px;
+    }
+
+    .middle {
+        margin-top:10px;
+        float: left;
+        width: 70%;
+    }
+
+    /* Place text to the right */
+    .right {
+        text-align: right;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* The bar container */
+    .bar-container {
+        width: 100%;
+        background-color: #f1f1f1;
+        text-align: center;
+        color: white;
+    }
+
+
+    /* Individual bars */
+    .bar-5 {width: {{ notes[0].nbr*100/5 }}%; height: 18px; background-color: #4CAF50;}
+    .bar-4 {width: {{ notes[1].nbr *100/5 }}%; height: 18px; background-color: #2196F3;}
+    .bar-3 {width: {{ notes[2].nbr *100/5 }}%; height: 18px; background-color: #00bcd4;}
+    .bar-2 {width: {{ notes[3].nbr *100/5  }}%; height: 18px; background-color: #ff9800;}
+
+    /* Responsive layout - make the columns stack on top of each other instead of next to each other */
+    @media (max-width: 400px) {
+        .side, .middle {
+            width: 100%;
+        }
+        .right {
+            display: none;
+        }
+    }
+</style>
+
+     <div class="section-top-border">
+         <h4 class="mb-30"> <center>Pour ganier votre confience en met a votre disposition les votes de certaines personnes </center></h4>
+         <div class="row">
+             <div class="col-lg-12">
+
+             </div>
+         </div>
+     </div>
+
+     <div class="row">
+    <div class="side">
+    </div>
+    <br>
+
+
+
+    <div class="middle">
+        <div class="bar-container">
+            <div class="bar-4">{{ notes[1].nbr }} avis sur reclamation 1</div>
+        </div>
+    </div>
+
+
+    <div class="middle">
+        <div class="bar-container">
+            <div class="bar-3">{{ notes[2].nbr }} avis sur reclamation 2</div>
+        </div>
+    </div>
+
+
+    <div class="middle">
+        <div class="bar-container">
+            <div class="bar-2">{{ notes[3].nbr }} avis sur reclamation 3</div>
+        </div>
+    </div>
+    <div class="middle">
+        <div class="bar-container">
+            <div class="bar-5">{{ notes[0].nbr }} avis sur reclamation 4</div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+</div>
+<br>
+<br>
+ {% endblock  %}

@@ -1,0 +1,101 @@
+{% extends 'base1.html.twig' %}
+
+
+{% block body %}
+
+
+    <section class="confirmation_part section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="confirmation_tittle">
+
+                        <button class="button rounded-0 primary-bg text-white w-100 btn_1">Start Animation</button>
+                        <h2 id="p1" >ici vous trouver tous les detailles de votre reclamations</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-lx-4">
+                    <div class="single_confirmation_details">
+                        <h4> info general </h4>
+                        <ul>
+                            <li>
+                                <p>{{ numTelDemande }}</p><span>: nom</span>
+                            </li>
+                            <li>
+                                <p>{{ postDemande }}</p><span>: type</span>
+                            </li>
+                            <li>
+                                <p>{{ nomDemande }}</p><span>: objet de cette reclamation</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-lg-6 col-lx-4">
+                    <div class="single_confirmation_details">
+                        <h4>A propos du rating</h4>
+                        <ul>
+                            <li>
+                                <p>{{ TabReclamation.rating  |  rating }}</p><span>: cette reclamation a etais noté comme ce ci</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-lx-4">
+                    <div class="single_confirmation_details">
+                        <h4>Autre informations</h4>
+                        <ul>
+                            <li>
+                                <p>{{ prenomDemande }}</p><span>: L'etat de cette demande</span>
+                            </li>
+
+                            <li>
+                                <p>{{ cinDemande }}</p><span>: Description</span>
+                            </li>
+                            <li>
+                                <p>{{   idDemande }}</p><span>: Num de cette reclamation</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                var section = $("section");
+                section.animate({height: '30000px', opacity: '0.4'}, "slow");
+                section.animate({width: '30000px', opacity: '0.8'}, "slow");
+                section.animate({height: '1050px', opacity: '0.4'}, "slow");
+                section.animate({width: '1500px', opacity: '0.8'}, "slow");
+
+            });
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#p1").mouseleave(function(){
+                alert("Tu peut retourner vers la page precidente pour modifier!");
+            });
+        });
+    </script>
+
+
+
+
+{% endblock %}

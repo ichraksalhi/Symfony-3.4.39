@@ -1,0 +1,126 @@
+{% extends 'AcceuilAdmin.html.twig' %}
+{% block title %}Les reservations{% endblock %}
+
+{% block body %}
+    <br/>
+    <br/>
+    <h1>Les abonnements restaurant</h1>
+
+    <form method="post">
+        <input type="text" name="nom"   placeholder="nom">
+        <select id="typeAbo"  name="typeAbo"  >
+            <option value=""></option>
+            <option value="annuel">annuel</option>
+            <option value="mensuel">mensuel</option>
+            <option value="hebdomadaire">hebdomadaire</option>
+
+        </select>
+
+        <select id="typePension"  name="typePension">
+            <option value=""></option>
+            <option value="complete">complete</option>
+            <option value="Demi p1">Demi p1</option>
+            <option value="Demi p2">Demi p2</option>
+
+        </select>
+
+        <select id="etat"  name="etat">
+            <option value=""></option>
+            <option value="1">payer</option>
+            <option value="NULL">non payer</option>
+        </select>
+
+        <input type="submit" value="rechercher" class="btn btn-dark">
+    </form>
+
+
+
+
+
+
+
+    <input type="text" id="search" class="form-control" placeholder="Cherchez une reservation ...">
+    <table  class="table table-bordered"  id="tableac">
+        <thead>
+            <tr>
+
+
+                <th scope="col">Nom</th>
+                <th scope="col">Type abonnement</th>
+                <th scope="col">Type pension</th>
+                <th scope="col">Absence</th>
+                <th scope="col">Date abonnement</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonneresto in abonnerestos %}
+            {% if abonneresto.etat == 1 %}
+                {% set color = '#80c1ff' %}
+            {% elseif abonneresto.etat == 0 %}
+                {% set color = '#ff8080' %}
+
+            {% endif %}
+
+
+
+            <tr>
+                <td style="background-color:{{color}} ; color:{{'#3f4c5a'}}">{{ abonneresto.nom }}</td>
+                <td style="background-color:{{color}} ; color:{{'#3f4c5a'}}">{{ abonneresto.typeAbo }}</td>
+                <td style="background-color:{{color}} ; color:{{'#3f4c5a'}}">{{ abonneresto.typePension }}</td>
+                <td style="background-color:{{color}} ; color:{{'#3f4c5a'}}">{{ abonneresto.absence }}</td>
+                <td style="background-color:{{color}} ; color:{{'#3f4c5a'}}">{% if abonneresto.dateAbo %}{{ abonneresto.dateAbo|date('Y-m-d') }}{% endif %}</td>
+                <td style="background-color:{{color}} ; color:{{'#3f4c5a'}}">
+                    <ul>
+                        <li>
+                            <a href="{{ path('abonneresto_show', { 'id': abonneresto.id }) }} " style="color:#b08ead;" >voir</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('abonneresto_edit', { 'id': abonneresto.id }) }}" style="color:#b08ead;">modifier</a>
+                        </li>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('abonneresto_new') }}" style="color:#b08ead;"> créer une nouvelle reservation</a>
+        </li>
+    </ul>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#tableac tbody tr').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                        if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                        {
+                            found = 'true';
+                        }
+                    });
+                    if(found == 'true')
+                    {
+                        $(this).show();
+
+                    }
+                    else
+                    {
+                        $(this).hide();
+
+                    }
+                });
+            }
+        });
+    </script>
+
+{% endblock %}

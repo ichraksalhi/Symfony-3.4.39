@@ -1,0 +1,3 @@
+ichh_homepage:
+    path:     /
+    defaults: { _controller: ichhBundle:Default:index }
